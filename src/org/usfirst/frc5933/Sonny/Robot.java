@@ -9,14 +9,14 @@
 // it from being updated in the future.
 
 
-package org.usfirst.frc5933.Sonny2;
+package org.usfirst.frc5933.Sonny;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc5933.Sonny2.commands.*;
-import org.usfirst.frc5933.Sonny2.subsystems.*;
+import org.usfirst.frc5933.Sonny.commands.*;
+import org.usfirst.frc5933.Sonny.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the

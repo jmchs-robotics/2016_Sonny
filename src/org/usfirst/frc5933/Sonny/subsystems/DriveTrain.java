@@ -9,10 +9,10 @@
 // it from being updated in the future.
 
 
-package org.usfirst.frc5933.Sonny2.subsystems;
+package org.usfirst.frc5933.Sonny.subsystems;
 
-import org.usfirst.frc5933.Sonny2.RobotMap;
-import org.usfirst.frc5933.Sonny2.commands.*;
+import org.usfirst.frc5933.Sonny.RobotMap;
+import org.usfirst.frc5933.Sonny.commands.*;
 import edu.wpi.first.wpilibj.CANTalon;
 
 import edu.wpi.first.wpilibj.command.Subsystem;

@@ -9,10 +9,10 @@
 // it from being updated in the future.
 
 
-package org.usfirst.frc5933.Sonny2.commands;
+package org.usfirst.frc5933.Sonny.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc5933.Sonny2.Robot;
+import org.usfirst.frc5933.Sonny.Robot;
 
 /**
  *
