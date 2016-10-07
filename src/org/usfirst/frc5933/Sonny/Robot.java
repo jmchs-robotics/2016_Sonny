@@ -99,7 +99,8 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        arcadeDrive.start();
+        if (arcadeDrive != null)
+        	arcadeDrive.start();
     }
 
     /**

@@ -49,12 +49,7 @@ public class DriveTrain extends Subsystem {
         // setDefaultCommand(new MySpecialCommand());
     }
     public void arcadeDrive(Joystick stick) {
-        double y = stick.getY();
-        double x = stick.getX();
-
-        // reverse the arcade controls during a match
-
-        robotDrive.arcadeDrive(y, x);
+        robotDrive.arcadeDrive(stick);
     }
 
     // Stop it .... Just Stop it ......
