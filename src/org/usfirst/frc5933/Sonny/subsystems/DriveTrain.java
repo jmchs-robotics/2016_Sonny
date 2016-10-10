@@ -56,6 +56,15 @@ public class DriveTrain extends Subsystem {
     public void stop() {
         robotDrive.stopMotor();
     }
-
+    
+    public void turn_left(double degrees) {
+        // TODO: Figure out how to convert degrees into a rotation value
+        left.setPosition(degrees);
+    }
+    
+    public void turn_right(double degrees) {
+        // TODO: Figure out how to convert degrees into a rotation value
+        right.setPosition(degrees);
+    }
 }
 
