@@ -31,11 +31,6 @@ public class Lidar {
         reset();
     }
 
-    private void crap() {
-        CANTalon talon = new CANTalon(666);
-        talon.disable();
-    }
-    
     private void reset() {
         state = CommandState.READY;
         range = 0;
