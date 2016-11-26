@@ -1,94 +1,89 @@
+
 package org.usfirst.frc5933.Sonny;
 
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.util.Arrays;
+import java.util.TimerTask;
 
-import edu.wpi.first.wpilibj.CANTalon;
-import edu.wpi.first.wpilibj.can.CANJNI;
+import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.Timer;
 
 public class Lidar {
-    private enum CommandState {
-        READY, REQUEST_DISTANCE, WAIT_FOR_DISTANCE, DONE
-    }
 
-    /* Check the datasheets for your device for the arbitration IDs of the
-    messages you want to send.  By convention, this is a bitstring
-    containing the model number, manufacturer number, and api number. */
-    private static final int REQUEST_RANGE_ARB_ID = 0x1;
-    private static final int RESPOND_RANGE_ARB_ID = 0x2;
-
-    /*  Device ID, from 0 to 63. */
-    private static final int LIDAR_ID = 60; // FIXME: I think we change this ID
-
-    private IntBuffer messageId = ByteBuffer.allocateDirect(4).asIntBuffer();
-    private ByteBuffer data = ByteBuffer.allocateDirect(8);
-    private ByteBuffer timestamp = ByteBuffer.allocate(4);
-    private int range = 0;
-    private CommandState state;
+    private I2C i2c;
+    private static byte[] distance;
+    private java.util.Timer updater;
+    
+    private final int LIDAR_ADDR = 0x62;
+    private final int LIDAR_CONFIG_REGISTER = 0x00;
+    private final int LIDAR_DISTANCE_REGISTER = 0x8f;
+    
+    private static boolean hasRead = false;
 
     public Lidar() {
-        reset();
+        i2c = new I2C(I2C.Port.kMXP, LIDAR_ADDR);
+        distance = new byte[2];
+        updater = new java.util.Timer();
     }
 
-    private void reset() {
-        state = CommandState.READY;
-        range = 0;
-        // FIXME: do we have to increment the message id for each new message ?
-    }
-    
-    private static int makeUnsignedByte(byte b) {
-        return (int) b & 0xFF;
+    // Distance in cm
+    public static int getDistance() {
+        if (!hasRead)
+            return 0;
+        return (int) Integer.toUnsignedLong(distance[0] << 8) + Byte.toUnsignedInt(distance[1]);
     }
 
-    private void requestRange() {
-        /* Again, see the datasheet for the device you're using.  It should
-        specify what data to put here. */
-        data.clear();
-        data.putInt(1);
-
-        /* Alternatively, instead of CAN_SEND_PERIOD_NO_REPEAT, you can specify
-            a period in milliseconds to automatically send the message over
-            and over again. */
-        CANJNI.FRCNetworkCommunicationCANSessionMuxSendMessage(
-                REQUEST_RANGE_ARB_ID | LIDAR_ID,
-                data,
-                CANJNI.CAN_SEND_PERIOD_NO_REPEAT
-        );
-        // FIXME I suppose we need to shift the ID some value.
+    public double pidGet() {
+        return getDistance();
     }
 
-    public boolean hasValidRange() {
-        if (state == CommandState.READY) {
-            requestRange();
-            state = CommandState.WAIT_FOR_DISTANCE;
-        } else if (state == CommandState.WAIT_FOR_DISTANCE) {
-            /* To receive a message, put the message ID you're looking for in this
-            buffer.  CANJNI...ReceiveMessage  will not block waiting for it,
-            but just return null if it hasn't been received yet. */
-            messageId.clear();
-            messageId.put(0, RESPOND_RANGE_ARB_ID | LIDAR_ID);
+    // Start 10Hz polling
+    public void start() {
+        updater.scheduleAtFixedRate(new LIDARUpdater(), 0, 1000);
+    }
 
-            ByteBuffer data = CANJNI.FRCNetworkCommunicationCANSessionMuxReceiveMessage(
-                    messageId,
-                    CANJNI.CAN_MSGID_FULL_M,
-                    timestamp
-            );
+    // Start polling for period in milliseconds
+    public void start(int period) {
+        updater.scheduleAtFixedRate(new LIDARUpdater(), 0, period);
+    }
 
-            if (data != null) {
-                // FIXME remove debug
-                System.out.println("Received a message: " + Arrays.toString(data.array()));
-                range = (makeUnsignedByte(data.array()[0])<<8) + makeUnsignedByte(data.array()[1]);
-                System.out.println("Range is: " + range);
-                state = CommandState.DONE;
+    public void stop() {
+        updater.cancel();
+    }
+
+    // Update distance variable
+    public void update() {
+        distance[0] = 0;
+        distance[1] = 0;
+        hasRead = false;
+        
+        if (i2c.write(LIDAR_CONFIG_REGISTER, 0x04)) {
+            System.err.println("NO WRITE");
+            return;
+        }
+        
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        if (i2c.read(LIDAR_DISTANCE_REGISTER, 2, distance)) {
+            System.err.println("NO READ");
+            return;
+        }
+        hasRead = true;
+    }
+
+    // Timer task to keep distance updated
+    private class LIDARUpdater extends TimerTask {
+        public void run() {
+            update();
+            System.out.println("DISTANCE: " + getDistance());
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
-        return state == CommandState.DONE;
-    }
-
-    public int getRange() {
-        int tmp = range;
-        reset();
-        return tmp;
     }
 }
+

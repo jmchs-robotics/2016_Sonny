@@ -67,7 +67,6 @@ public class Robot extends IterativeRobot {
      * You can use it to reset subsystems before shutting down.
      */
     public void disabledInit(){
-
     }
 
     public void disabledPeriodic() {
@@ -94,6 +93,8 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (autonomousCommand != null) 
             autonomousCommand.cancel();
+        if (lidar != null)
+            lidar.start();
     }
 
     /**
@@ -104,11 +105,6 @@ public class Robot extends IterativeRobot {
         if (arcadeDrive != null)
         	arcadeDrive.start();
         
-        if (lidar != null) {
-            if (lidar.hasValidRange()) {
-                System.out.println("Got range: " + lidar.getRange());
-            }
-        }
     }
 
     /**
