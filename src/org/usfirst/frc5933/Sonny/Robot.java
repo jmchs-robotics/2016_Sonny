@@ -93,10 +93,12 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (autonomousCommand != null) 
             autonomousCommand.cancel();
-        if (lidar != null)
-            lidar.start();
     }
 
+    private long triggerTime = 0;
+    private long readTime = 0;
+    private boolean trigger = false;
+    
     /**
      * This function is called periodically during operator control
      */
@@ -104,7 +106,29 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         if (arcadeDrive != null)
         	arcadeDrive.start();
-        
+
+        long now = System.currentTimeMillis();
+        if (triggerTime == 0) {
+            triggerTime = now + 100;
+            readTime = now + 100;
+            trigger = true;
+        }
+
+        if (lidar != null) {
+            if (now > triggerTime + 100) {
+                if (trigger) {
+                    trigger = false;
+                    lidar.trigger();
+                    readTime = now + 100;
+                } else if (now > readTime) {
+                    lidar.getDistance();
+                    triggerTime = now + 100;
+                    readTime = now + 100;
+                    trigger = true;
+                }
+            }
+        }
+
     }
 
     /**

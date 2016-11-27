@@ -3,87 +3,42 @@ package org.usfirst.frc5933.Sonny;
 
 import java.util.TimerTask;
 
-import edu.wpi.first.wpilibj.I2C;
-import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.Counter;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DigitalOutput;
 
 public class Lidar {
-
-    private I2C i2c;
-    private static byte[] distance;
-    private java.util.Timer updater;
     
-    private final int LIDAR_ADDR = 0x62;
-    private final int LIDAR_CONFIG_REGISTER = 0x00;
-    private final int LIDAR_DISTANCE_REGISTER = 0x8f;
+    private DigitalInput input;
+    private DigitalOutput output;    
+    private Counter counter;
     
-    private static boolean hasRead = false;
-
     public Lidar() {
-        i2c = new I2C(I2C.Port.kMXP, LIDAR_ADDR);
-        distance = new byte[2];
-        updater = new java.util.Timer();
+        input = new DigitalInput(9);
+        counter = new Counter(input);
+        counter.setSemiPeriodMode(true);
+        System.out.println("SAMPLE: " + counter.getSamplesToAverage());
+        counter.setSamplesToAverage(10);
+        output = new DigitalOutput(8);
+        output.set(true);
     }
 
-    // Distance in cm
-    public static int getDistance() {
-        if (!hasRead)
-            return 0;
-        return (int) Integer.toUnsignedLong(distance[0] << 8) + Byte.toUnsignedInt(distance[1]);
+    public void trigger() {
+        counter.reset();
+        output.set(false);
+        System.out.println("TRIGGER");
     }
-
-    public double pidGet() {
-        return getDistance();
-    }
-
-    // Start 10Hz polling
-    public void start() {
-        updater.scheduleAtFixedRate(new LIDARUpdater(), 0, 1000);
-    }
-
-    // Start polling for period in milliseconds
-    public void start(int period) {
-        updater.scheduleAtFixedRate(new LIDARUpdater(), 0, period);
-    }
-
-    public void stop() {
-        updater.cancel();
-    }
-
-    // Update distance variable
-    public void update() {
-        distance[0] = 0;
-        distance[1] = 0;
-        hasRead = false;
+    
+    public void getDistance() {
+        double raw = counter.getPeriod() * 10000;
+        // double distance1 = ((0.05 * raw * raw) + (2.6 * raw)) + 0;
         
-        if (i2c.write(LIDAR_CONFIG_REGISTER, 0x04)) {
-            System.err.println("NO WRITE");
-            return;
-        }
+        double distance2  = (raw * 2.75);
         
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        
-        if (i2c.read(LIDAR_DISTANCE_REGISTER, 2, distance)) {
-            System.err.println("NO READ");
-            return;
-        }
-        hasRead = true;
-    }
-
-    // Timer task to keep distance updated
-    private class LIDARUpdater extends TimerTask {
-        public void run() {
-            update();
-            System.out.println("DISTANCE: " + getDistance());
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+        // System.out.println("DISTANCE1: " + distance1);
+        System.out.println("DISTANCE2: " + distance2);
+        System.out.println("RAW: " + raw);
+        output.set(true);
     }
 }
 
