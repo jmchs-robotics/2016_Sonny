@@ -14,12 +14,12 @@ public class Lidar {
     private Counter counter;
     
     public Lidar() {
-        input = new DigitalInput(9);
-        counter = new Counter(input);
+        input = new DigitalInput(9); // Orange
+        counter = new Counter(input); 
         counter.setSemiPeriodMode(true);
         System.out.println("SAMPLE: " + counter.getSamplesToAverage());
         counter.setSamplesToAverage(10);
-        output = new DigitalOutput(8);
+        output = new DigitalOutput(8); // Brown
         output.set(true);
     }
 
@@ -33,7 +33,7 @@ public class Lidar {
         double raw = counter.getPeriod() * 10000;
         // double distance1 = ((0.05 * raw * raw) + (2.6 * raw)) + 0;
         
-        double distance2  = (raw * 2.75);
+        double distance2  = (raw * 3.865) ;
         
         // System.out.println("DISTANCE1: " + distance1);
         System.out.println("DISTANCE2: " + distance2);
