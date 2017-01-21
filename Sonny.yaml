@@ -89,10 +89,6 @@ Children:
           value: '11'
       Base: CAN Talon
       Name: frontFlap
-    - Children: []
-      Properties: {}
-      Base: BatteryVoltage
-      Name: BatteryVoltage 1
     Properties:
       Default command parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
@@ -322,7 +318,7 @@ Children:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
-    Name: 'null'
+    Name: nullCommand
   - Children: []
     Properties:
       Parameters: !!robotbuilder.data.properties.ParametersProperty
