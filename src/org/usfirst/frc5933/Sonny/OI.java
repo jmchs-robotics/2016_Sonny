@@ -66,7 +66,7 @@ public class OI {
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
         SmartDashboard.putData("ArcadeDrive", new ArcadeDrive());
         SmartDashboard.putData("teleopCommand", new teleopCommand());
-        SmartDashboard.putData("null", new null());
+        SmartDashboard.putData("nullCommand", new nullCommand());
         SmartDashboard.putData("agitate", new agitate());
         SmartDashboard.putData("fire", new fire());
         SmartDashboard.putData("elevate", new elevate());
