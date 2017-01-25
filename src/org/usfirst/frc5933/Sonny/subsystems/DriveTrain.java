@@ -49,7 +49,12 @@ public class DriveTrain extends Subsystem {
         // setDefaultCommand(new MySpecialCommand());
     }
     public void arcadeDrive(Joystick stick) {
-        robotDrive.arcadeDrive(stick);
+    	System.out.println("Stick X: " + stick.getX());
+    	System.out.println("Stick Y: " + stick.getY());
+    	System.out.println("Stick Z: " + stick.getZ());
+    	
+    	robotDrive.arcadeDrive(stick.getY(), stick.getX(), true); //no idea what TRUE does, but this is the proper way to drive Sonny. Troubleshooting SUCKS.
+    	//robotDrive.arcadeDrive(stick); //defective drive program. Inverted X-axis issues on Sonny.
     }
 
     // Stop it .... Just Stop it ......
