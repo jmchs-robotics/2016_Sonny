@@ -45,5 +45,14 @@ public class FrontFlapper extends Subsystem {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
     }
+    
+    public void open() {
+    	frontFlapMotor.set(1);
+    	// TODO: turn off when we get a switch
+    }
+    
+    public void close() {
+    	frontFlapMotor.set(0);
+    }
 }
 

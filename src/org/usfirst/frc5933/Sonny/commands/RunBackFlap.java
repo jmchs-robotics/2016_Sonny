@@ -37,19 +37,25 @@ public class RunBackFlap extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	//initialize 3 buttons for flap positions
+    	//same buttons will also be in RunFrontFlap
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	//when the button(s) is/are pressed correspond with positions with motor
+    	//motor: timing?
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	//stop when button is done being pressed
         return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	//when isFinished is called end
     }
 
     // Called when another command which requires one or more of the same
