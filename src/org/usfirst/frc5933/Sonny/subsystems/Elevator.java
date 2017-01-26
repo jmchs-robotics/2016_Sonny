@@ -19,7 +19,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 
 /**
- *
+ * This subsystem needs to be able to:
+ * 1. Turn on
+ * 2. Rotate at steady, fast speed
+ * 3. Run in conjunction with the vacuum motor
+ * 4. Turn off
  */
 public class Elevator extends Subsystem {
 
@@ -45,5 +49,14 @@ public class Elevator extends Subsystem {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
     }
+    
+    public void turnOn() {
+    	elevator.set(1);
+    }
+    
+    public void turnOff() {
+    	elevator.set(0);
+    }
+    
 }
 

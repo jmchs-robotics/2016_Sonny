@@ -19,7 +19,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 
 /**
- *
+ *This subsystem needs to be able to:
+ *1. Turn on
+ *2. Spin one direction 
+ *3. Run in conjunction with elevator
+ *4. Turn off
  */
 public class VacuumMotor extends Subsystem {
 
@@ -45,5 +49,14 @@ public class VacuumMotor extends Subsystem {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
     }
+    
+    public void turnOn(){
+    	beaterBar.set(1);
+    }
+    
+    public void turnOff(){
+    	beaterBar.set(0);
+    }
+    
 }
 
