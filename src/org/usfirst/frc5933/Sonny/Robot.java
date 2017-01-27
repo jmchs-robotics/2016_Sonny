@@ -34,8 +34,7 @@ public class Robot extends IterativeRobot {
     public static DriveTrain driveTrain;
     public static ClimbingSpindle climbingSpindle;
     public static ClimbingServo climbingServo;
-    public static VacuumMotor vacuumMotor;
-    public static Elevator elevator;
+    public static BallCollector ballCollector;
     public static FrontFlapper frontFlapper;
     public static BackFlapper backFlapper;
     public static HopperAgitator hopperAgitator;
@@ -54,8 +53,7 @@ public class Robot extends IterativeRobot {
         driveTrain = new DriveTrain();
         climbingSpindle = new ClimbingSpindle();
         climbingServo = new ClimbingServo();
-        vacuumMotor = new VacuumMotor();
-        elevator = new Elevator();
+        ballCollector = new BallCollector();
         frontFlapper = new FrontFlapper();
         backFlapper = new BackFlapper();
         hopperAgitator = new HopperAgitator();

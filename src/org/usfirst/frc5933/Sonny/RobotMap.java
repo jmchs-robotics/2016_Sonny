@@ -32,8 +32,8 @@ public class RobotMap {
     public static RobotDrive driveTrainRobotDrive;
     public static CANTalon climbingSpindlespindleMotor;
     public static Servo climbingServoclawServo;
-    public static CANTalon vacuumMotorBeaterBar;
-    public static CANTalon elevatorElevator;
+    public static CANTalon vacuumMotor;
+    public static CANTalon elevatorMotor;
     public static Jaguar frontFlapperFrontFlapMotor;
     public static Jaguar backFlapperBackFlapMotor;
     public static CANTalon hopperAgitatorFeederMotor;
@@ -62,11 +62,11 @@ public class RobotMap {
         climbingServoclawServo = new Servo(0);
         LiveWindow.addActuator("Climbing Servo", "clawServo", climbingServoclawServo);
         
-        vacuumMotorBeaterBar = new CANTalon(3);
-        LiveWindow.addActuator("Vacuum Motor", "Beater Bar", vacuumMotorBeaterBar);
+        vacuumMotor = new CANTalon(3);
+        LiveWindow.addActuator("Vacuum Motor", "Beater Bar", vacuumMotor);
         
-        elevatorElevator = new CANTalon(4);
-        LiveWindow.addActuator("Elevator", "Elevator", elevatorElevator);
+        elevatorMotor = new CANTalon(4);
+        LiveWindow.addActuator("Elevator", "Elevator", elevatorMotor);
         
         frontFlapperFrontFlapMotor = new Jaguar(0);
         LiveWindow.addActuator("Front Flapper", "Front Flap Motor", frontFlapperFrontFlapMotor);
