@@ -48,6 +48,8 @@ public class ClimbingServo extends Subsystem {
     }
     public void openClaw() {
     	//Claw opens when method called
+    	clawServo.setAngle(0);
+    	
     }
 }
 

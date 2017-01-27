@@ -62,4 +62,24 @@ public class RunBackFlap extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
+
+    public static Command close() {
+		// TODO Auto-generated method stub
+		Robot.backFlapper.runMotor(-1);
+		
+		return null;
+	}
+
+	public static Command open() {
+		// TODO Auto-generated method stub
+		Robot.backFlapper.runMotor(1);
+		
+		return null;
+	}
+	
+	public static Command stop() {
+		Robot.backFlapper.runMotor(0);
+		
+		return null;
+	}
 }

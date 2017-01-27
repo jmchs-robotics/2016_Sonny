@@ -12,6 +12,7 @@
 package org.usfirst.frc5933.Sonny.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc5933.Sonny.Robot;
+import org.usfirst.frc5933.Sonny.subsystems.*;
 
 /**
  *
@@ -56,4 +57,24 @@ public class RunFrontFlap extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
+
+	public static Command close() {
+		// TODO Auto-generated method stub
+		Robot.frontFlapper.runMotor(-1);
+		
+		return null;
+	}
+
+	public static Command open() {
+		// TODO Auto-generated method stub
+		Robot.frontFlapper.runMotor(1);
+		
+		return null;
+	}
+	
+	public static Command stop() {
+		Robot.frontFlapper.runMotor(0);
+		
+		return null;
+	}
 }
