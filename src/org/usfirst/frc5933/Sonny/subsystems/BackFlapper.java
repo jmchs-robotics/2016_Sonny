@@ -45,5 +45,11 @@ public class BackFlapper extends Subsystem {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
     }
+    
+    public void runMotor(int power) {
+    	backFlapMotor.set(power);
+    	// TODO: turn off when we get a switch
+    }
+
 }
 
