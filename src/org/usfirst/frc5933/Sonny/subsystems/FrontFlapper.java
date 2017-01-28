@@ -14,7 +14,6 @@ package org.usfirst.frc5933.Sonny.subsystems;
 import org.usfirst.frc5933.Sonny.RobotMap;
 import org.usfirst.frc5933.Sonny.commands.*;
 import com.ctre.CANTalon;
-
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
 

@@ -16,6 +16,7 @@ import org.usfirst.frc5933.Sonny.commands.*;
 import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
@@ -46,7 +47,7 @@ public class BackFlapper extends Subsystem {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
     }
-    
+
     public void runMotor(int power){
     	backFlapMotor.set(power);
     	System.out.println("Running Back Flap: " + power);
