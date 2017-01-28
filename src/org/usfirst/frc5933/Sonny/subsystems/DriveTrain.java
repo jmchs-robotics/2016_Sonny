@@ -11,6 +11,7 @@
 
 package org.usfirst.frc5933.Sonny.subsystems;
 
+import org.usfirst.frc5933.Sonny.Robot;
 import org.usfirst.frc5933.Sonny.RobotMap;
 import org.usfirst.frc5933.Sonny.commands.*;
 import com.ctre.CANTalon;
@@ -57,6 +58,10 @@ public class DriveTrain extends Subsystem {
     	
     	robotDrive.arcadeDrive(stick.getY(), -stick.getX()); //no idea what TRUE does, but this is the proper way to drive Sonny. Troubleshooting SUCKS.
     	// robotDrive.arcadeDrive(stick); //defective drive program. Inverted X-axis issues on Sonny.
+    }
+
+    public void driveStraight(double v){
+        robotDrive.tankDrive(v, v);
     }
 
     // Stop it .... Just Stop it ......
