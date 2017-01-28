@@ -55,8 +55,8 @@ public class DriveTrain extends Subsystem {
     	*System.out.println("Stick Z: " + stick.getZ());
     	*/
     	
-    	robotDrive.arcadeDrive(stick.getY(), stick.getX(), true); //no idea what TRUE does, but this is the proper way to drive Sonny. Troubleshooting SUCKS.
-    	//robotDrive.arcadeDrive(stick); //defective drive program. Inverted X-axis issues on Sonny.
+    	robotDrive.arcadeDrive(stick.getY(), -stick.getX()); //no idea what TRUE does, but this is the proper way to drive Sonny. Troubleshooting SUCKS.
+    	// robotDrive.arcadeDrive(stick); //defective drive program. Inverted X-axis issues on Sonny.
     }
 
     // Stop it .... Just Stop it ......

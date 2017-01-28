@@ -69,11 +69,11 @@ public class RobotMap {
         elevatorMotor = new CANTalon(4);
         LiveWindow.addActuator("Elevator", "Elevator", elevatorMotor);
         
-        frontFlapperFrontFlapMotor = new Jaguar(0);
-        LiveWindow.addActuator("Front Flapper", "Front Flap Motor", frontFlapperFrontFlapMotor);
+//        frontFlapperFrontFlapMotor = new Jaguar(0);
+//        LiveWindow.addActuator("Front Flapper", "Front Flap Motor", frontFlapperFrontFlapMotor);
         
-        backFlapperBackFlapMotor = new Jaguar(1);
-        LiveWindow.addActuator("Back Flapper", "Back Flap Motor", backFlapperBackFlapMotor);
+//        backFlapperBackFlapMotor = new Jaguar(1);
+//        LiveWindow.addActuator("Back Flapper", "Back Flap Motor", backFlapperBackFlapMotor);
         
         hopperAgitatorFeederMotor = new CANTalon(7);
         LiveWindow.addActuator("Hopper Agitator", "Feeder Motor", hopperAgitatorFeederMotor);
