@@ -53,9 +53,9 @@ public class DriveTrain extends Subsystem {
     	robotDrive.arcadeDrive(stick.getY(), -stick.getX());
     }
 
-    public void driveStraight(double v){
-        robotDrive.tankDrive(v, v);
-    }
+    /*public void driveStraight(double v){
+        robotDrive.tankDrive(v , v);
+    }*/
 
     // Stop it .... Just Stop it ......
     public void stop() {
