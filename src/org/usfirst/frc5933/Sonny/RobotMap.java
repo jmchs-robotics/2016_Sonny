@@ -75,8 +75,8 @@ public class RobotMap {
         flyWheelFlyWheelMotor = new CANTalon(5);
         LiveWindow.addActuator("FlyWheel", "FlyWheelMotor", flyWheelFlyWheelMotor);
         
-//        frontFlapperFrontMotor = new Jaguar(1);
-//        LiveWindow.addActuator("FrontFlapper", "FrontMotor", (Jaguar) frontFlapperFrontMotor);
+        frontFlapperFrontMotor = new Jaguar(1);
+        LiveWindow.addActuator("FrontFlapper", "FrontMotor", (Jaguar) frontFlapperFrontMotor);
         
         hopperAgitatorAgitiatorMotor = new CANTalon(6);
         LiveWindow.addActuator("HopperAgitator", "AgitiatorMotor", hopperAgitatorAgitiatorMotor);
