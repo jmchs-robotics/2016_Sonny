@@ -19,7 +19,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 
 /**
- *
+ *1. Turn on.
+ *2. Launch balls from hopper into flywheel.
+ *3. Run in conjunction with FlyWheel.
+ *4. Turn off.
  */
 public class HopperAgitator extends Subsystem {
 
@@ -46,4 +49,5 @@ public class HopperAgitator extends Subsystem {
         // setDefaultCommand(new MySpecialCommand());
     }
 }
+
 
