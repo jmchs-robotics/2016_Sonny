@@ -61,8 +61,8 @@ public class RobotMap {
         backFlapperBackMotor = new Spark(0);
         LiveWindow.addActuator("BackFlapper", "BackMotor", (Spark) backFlapperBackMotor);
         
-//        climbingServoClimbingMotor = new Jaguar(2);
-//        LiveWindow.addActuator("ClimbingServo", "ClimbingMotor", (Jaguar) climbingServoClimbingMotor);
+        climbingServoClimbingMotor = new Jaguar(2);
+        LiveWindow.addActuator("ClimbingServo", "ClimbingMotor", (Jaguar) climbingServoClimbingMotor);
         
         climbingSpindleClimbSpindle = new CANTalon(0);
         LiveWindow.addActuator("ClimbingSpindle", "ClimbSpindle", climbingSpindleClimbSpindle);
