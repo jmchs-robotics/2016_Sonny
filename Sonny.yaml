@@ -83,7 +83,7 @@ Children:
           default: '0'
           name: Output Channel (PWM)
           validators: &id005 [PWMOutput]
-          value: '2'
+          value: '0'
       Base: Speed Controller
       Name: ClimbingMotor
     Properties:
@@ -115,7 +115,7 @@ Children:
           default: '0'
           name: Output Channel (PWM)
           validators: *id005
-          value: '0'
+          value: '2'
       Base: Speed Controller
       Name: BackMotor
     Properties:
@@ -235,7 +235,7 @@ Children:
           default: '0'
           name: Output Channel (PWM)
           validators: *id005
-          value: '1'
+          value: '13'
       Base: Speed Controller
       Name: FrontMotor
     Properties:

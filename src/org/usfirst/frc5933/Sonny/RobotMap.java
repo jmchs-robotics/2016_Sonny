@@ -58,7 +58,7 @@ public class RobotMap {
         driveTrainRobotDrive.setSensitivity(0.5);
         driveTrainRobotDrive.setMaxOutput(1.0);
 
-        backFlapperBackMotor = new Spark(0);
+        backFlapperBackMotor = new Spark(1);
         LiveWindow.addActuator("BackFlapper", "BackMotor", (Spark) backFlapperBackMotor);
         
         climbingServoClimbingMotor = new Jaguar(2);
@@ -76,7 +76,7 @@ public class RobotMap {
         flyWheelFlyWheelMotor = new CANTalon(5);
         LiveWindow.addActuator("FlyWheel", "FlyWheelMotor", flyWheelFlyWheelMotor);
         
-        frontFlapperFrontMotor = new Spark(1);
+        frontFlapperFrontMotor = new Spark(0);
         LiveWindow.addActuator("FrontFlapper", "FrontMotor", (Spark) frontFlapperFrontMotor);
         
         hopperAgitatorAgitiatorMotor = new CANTalon(6);
