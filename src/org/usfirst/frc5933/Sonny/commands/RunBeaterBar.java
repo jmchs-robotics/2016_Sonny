@@ -11,7 +11,9 @@
 
 package org.usfirst.frc5933.Sonny.commands;
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc5933.Sonny.Robot;
+import org.usfirst.frc5933.Sonny.RobotMap;
 
 /**
  *
@@ -41,6 +43,7 @@ public class RunBeaterBar extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	RobotMap.ballCollectorVacuumMotor.set(0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -50,6 +53,7 @@ public class RunBeaterBar extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	RobotMap.ballCollectorVacuumMotor.set(0);
     }
 
     // Called when another command which requires one or more of the same
