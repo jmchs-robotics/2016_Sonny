@@ -51,8 +51,10 @@ public class DriveStraight extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         System.out.println("finished");
-      return isTimedOut();
+     return true;
+        //return isTimedOut();
       //return false;
+   //idea: get rid of isTimedOut and just put return false
     }
 
     // Called once after isFinished returns true
