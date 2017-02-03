@@ -11,7 +11,9 @@
 
 package org.usfirst.frc5933.Sonny.commands;
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc5933.Sonny.Robot;
+import org.usfirst.frc5933.Sonny.RobotMap;
 import org.usfirst.frc5933.Sonny.subsystems.FlyWheel;
 
 /**
@@ -48,6 +50,7 @@ public class FireBalls extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	RobotMap.flyWheelFlyWheelMotor.set(0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -57,6 +60,7 @@ public class FireBalls extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	RobotMap.flyWheelFlyWheelMotor.set(0);
     }
 
     // Called when another command which requires one or more of the same
