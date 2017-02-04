@@ -60,7 +60,7 @@ public class RobotMap {
         climbingServoClimbingMotor = new Spark(0);
         LiveWindow.addActuator("ClimbingServo", "ClimbingMotor", (Spark) climbingServoClimbingMotor);
         
-        backFlapperBackMotor = new Spark(2);
+        backFlapperBackMotor = new Spark(1);
         LiveWindow.addActuator("BackFlapper", "BackMotor", (Spark) backFlapperBackMotor);
         
         climbingSpindleClimbSpindle = new CANTalon(0);
@@ -75,7 +75,7 @@ public class RobotMap {
         flyWheelFlyWheelMotor = new CANTalon(5);
         LiveWindow.addActuator("FlyWheel", "FlyWheelMotor", flyWheelFlyWheelMotor);
         
-        frontFlapperFrontMotor = new Spark(13);
+        frontFlapperFrontMotor = new Spark(2);
         LiveWindow.addActuator("FrontFlapper", "FrontMotor", (Spark) frontFlapperFrontMotor);
         
         hopperAgitatorAgitiatorMotor = new CANTalon(6);
