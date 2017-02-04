@@ -75,7 +75,7 @@ public class OI {
         xbox = new Joystick(0);
         
         backButton = new JoystickButton(xbox, 7);
-        backButton.whenPressed(new DriveStraight());
+        backButton.whileHeld(new DriveStraight());
         bButton = new JoystickButton(xbox, 2);
         bButton.whileHeld(new FrontFlapClose());
         yButton = new JoystickButton(xbox, 4);
