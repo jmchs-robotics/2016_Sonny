@@ -37,6 +37,7 @@ public class FlySlower extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
         Robot.flyWheel.goSlower();
+        //Robot.flyWheel.rpmDown();
     }
 
     // Called repeatedly when this Command is scheduled to run

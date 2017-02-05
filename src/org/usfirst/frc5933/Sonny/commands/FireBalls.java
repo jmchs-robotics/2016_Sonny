@@ -40,12 +40,16 @@ public class FireBalls extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        Robot.flyWheel.setSpeed(.5);
+        Robot.flyWheel.setVBusMode();
+        Robot.flyWheel.setpVBus(.5);
+        //Robot.flyWheel.setSpeedMode();
+        //Robot.flyWheel.setSpeed(250);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.flyWheel.go();
+    	Robot.flyWheel.goVBus();
+        //Robot.flyWheel.goSpeed();
     }
 
     // Make this return true when this Command no longer needs to run execute()
